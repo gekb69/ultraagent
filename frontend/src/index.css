@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary: #080c14;
+    --bg-secondary: #0d1220;
+    --bg-card: rgba(255,255,255,.04);
+    --border: rgba(255,255,255,.08);
+    --green: #00ff87;
+    --blue:  #00c6ff;
+    --violet:#a78bfa;
+  }
+}
+
+@layer utilities {
+  /* glass card */
+  .glass {
+    background: rgba(255,255,255,.04);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,.08);
+  }
+  .glass-hover:hover {
+    background: rgba(255,255,255,.07);
+    border-color: rgba(255,255,255,.12);
+  }
+
+  /* gradient text */
+  .text-grad {
+    background: linear-gradient(135deg,#00ff87,#00c6ff,#a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .text-grad-g {
+    background: linear-gradient(135deg,#00ff87,#00d4aa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* glow borders */
+  .border-glow-g { border-color: rgba(0,255,135,.3) !important; box-shadow: 0 0 20px rgba(0,255,135,.1); }
+  .border-glow-b { border-color: rgba(0,198,255,.3) !important; box-shadow: 0 0 20px rgba(0,198,255,.1); }
+  .border-glow-v { border-color: rgba(167,139,250,.3) !important; box-shadow: 0 0 20px rgba(167,139,250,.1); }
+}
+
+/* typing cursor */
+.typing-cursor::after {
+  content: '▋';
+  color: #00ff87;
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+/* bg mesh */
+.bg-mesh {
+  background-color: #080c14;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 20% 40%, rgba(0,255,135,.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 60%, rgba(0,198,255,.05) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 30% at 50% 80%, rgba(167,139,250,.04) 0%, transparent 60%);
+}
+
+/* orb animation */
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  animation: float 6s ease-in-out infinite;
+}
+
+/* mic pulse */
+.mic-active { animation: micPulse 1s ease-in-out infinite; }
+@keyframes micPulse {
+  0%,100%{ box-shadow: 0 0 0 0 rgba(0,255,135,.4) }
+  50%{ box-shadow: 0 0 0 12px rgba(0,255,135,0) }
+}
+
+/* agent status indicator */
+.status-working { animation: statusPulse 1.5s ease-in-out infinite; }
+@keyframes statusPulse { 0%,100%{opacity:1} 50%{opacity:.4} }
